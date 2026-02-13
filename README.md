@@ -5,7 +5,7 @@
 | **Project Name** | SmartGuard |
 | **Hackathon** | HackFest 2026 - HealthCare Hackathon |
 | **Organizer** | ISBD Labs |
-| **Hackathon URL** | NA |
+| **Hackathon URL** | [Event Page](https://i-venture.org/hackfest-2026/) |
 | **Team Name** | SmartGuard |
 | **Team Lead** | Divyanshu Patel |
 

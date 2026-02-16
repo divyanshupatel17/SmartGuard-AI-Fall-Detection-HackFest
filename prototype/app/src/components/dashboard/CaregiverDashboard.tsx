@@ -76,144 +76,135 @@ export function CaregiverDashboard({
   };
 
   return (
-    <div className="min-h-screen bg-sg-gradient flex flex-col">
+    <div className="min-h-screen min-h-[100dvh] bg-sg-gradient flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="pt-safe px-6 py-4 flex items-center gap-4">
+      <div className="pt-safe px-4 py-3 flex items-center gap-3 flex-shrink-0">
         <button
           onClick={onBack}
-          className="w-10 h-10 rounded-full bg-[#F5F7FA] flex items-center justify-center hover:bg-[#E8ECF0] transition-colors"
+          className="w-10 h-10 rounded-full bg-[#F5F7FA] flex items-center justify-center hover:bg-[#E8ECF0] transition-colors flex-shrink-0"
         >
           <ArrowLeft className="w-5 h-5 text-[#718096]" />
         </button>
-        <div>
-          <h1 className="text-xl font-bold text-[#1A202C]">Caregiver Dashboard</h1>
-          <p className="text-sm text-[#718096]">Monitor fall detection activity</p>
+        <div className="min-w-0">
+          <h1 className="text-lg font-bold text-[#1A202C] truncate">Caregiver Dashboard</h1>
+          <p className="text-xs text-[#718096]">Monitor fall detection activity</p>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 px-6 pb-6 space-y-6">
+      {/* Main Content — Scrollable */}
+      <div className="flex-1 px-4 pb-6 overflow-y-auto sg-scroll-area space-y-4">
         {/* Status Card */}
-        <div className="sg-card p-5">
-          <div className="flex items-center justify-between mb-4">
+        <div className="sg-card p-4">
+          <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                  isMonitoring ? 'bg-[#10B981]' : 'bg-[#718096]'
-                }`}
-              >
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <p className="text-sm text-[#718096]">Device Status</p>
-                <p
-                  className={`font-semibold text-lg ${
-                    isMonitoring ? 'text-[#10B981]' : 'text-[#718096]'
+                className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${isMonitoring ? 'bg-[#10B981]' : 'bg-[#718096]'
                   }`}
+              >
+                <Shield className="w-5 h-5 text-white" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs text-[#718096]">Device Status</p>
+                <p
+                  className={`font-semibold ${isMonitoring ? 'text-[#10B981]' : 'text-[#718096]'
+                    }`}
                 >
                   {isMonitoring ? 'Monitoring Active' : 'Not Monitoring'}
                 </p>
               </div>
             </div>
             <div
-              className={`w-3 h-3 rounded-full ${
-                isMonitoring ? 'bg-[#10B981] animate-pulse' : 'bg-[#718096]'
-              }`}
+              className={`w-3 h-3 rounded-full flex-shrink-0 ${isMonitoring ? 'bg-[#10B981] animate-pulse' : 'bg-[#718096]'
+                }`}
             />
           </div>
 
           {/* Caregiver Info */}
-          <div className="border-t border-gray-100 pt-4">
-            <p className="text-sm text-[#718096] mb-2">Emergency Contact</p>
+          <div className="border-t border-gray-100 pt-3">
+            <p className="text-xs text-[#718096] mb-2">Emergency Contact</p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#0056D2]/10 flex items-center justify-center">
-                <User className="w-5 h-5 text-[#0056D2]" />
+              <div className="w-9 h-9 rounded-full bg-[#0056D2]/10 flex items-center justify-center flex-shrink-0">
+                <User className="w-4 h-4 text-[#0056D2]" />
               </div>
-              <div>
-                <p className="font-semibold text-[#1A202C]">{caregiver.name}</p>
-                <p className="text-sm text-[#718096]">{caregiver.phoneNumber}</p>
+              <div className="min-w-0">
+                <p className="font-semibold text-[#1A202C] text-sm truncate">{caregiver.name}</p>
+                <p className="text-xs text-[#718096] truncate">{caregiver.phoneNumber}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="sg-card p-4 text-center">
-            <p className="text-2xl font-bold text-[#1A202C]">{stats.totalFalls}</p>
-            <p className="text-xs text-[#718096]">Total Events</p>
+        <div className="grid grid-cols-3 gap-3">
+          <div className="sg-card p-3 text-center">
+            <p className="text-xl font-bold text-[#1A202C]">{stats.totalFalls}</p>
+            <p className="text-[10px] text-[#718096] leading-tight mt-1">Total Events</p>
           </div>
-          <div className="sg-card p-4 text-center">
-            <p className="text-2xl font-bold text-[#EF4444]">{stats.alertsSent}</p>
-            <p className="text-xs text-[#718096]">Alerts Sent</p>
+          <div className="sg-card p-3 text-center">
+            <p className="text-xl font-bold text-[#EF4444]">{stats.alertsSent}</p>
+            <p className="text-[10px] text-[#718096] leading-tight mt-1">Alerts Sent</p>
           </div>
-          <div className="sg-card p-4 text-center">
-            <p className="text-2xl font-bold text-[#10B981]">{stats.cancelled}</p>
-            <p className="text-xs text-[#718096]">Cancelled</p>
+          <div className="sg-card p-3 text-center">
+            <p className="text-xl font-bold text-[#10B981]">{stats.cancelled}</p>
+            <p className="text-[10px] text-[#718096] leading-tight mt-1">Cancelled</p>
           </div>
         </div>
 
         {/* Fall History */}
         <div>
-          <h2 className="text-lg font-bold text-[#1A202C] mb-4 flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-[#0056D2]" />
+          <h2 className="text-base font-bold text-[#1A202C] mb-3 flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-[#0056D2]" />
             Fall History
           </h2>
 
           {fallHistory.length === 0 ? (
-            <div className="sg-card p-8 text-center">
-              <div className="w-16 h-16 rounded-full bg-[#ECFDF5] flex items-center justify-center mx-auto mb-4">
-                <TrendingDown className="w-8 h-8 text-[#10B981]" />
+            <div className="sg-card p-6 text-center">
+              <div className="w-14 h-14 rounded-full bg-[#ECFDF5] flex items-center justify-center mx-auto mb-3">
+                <TrendingDown className="w-7 h-7 text-[#10B981]" />
               </div>
-              <h3 className="text-lg font-semibold text-[#1A202C] mb-2">
+              <h3 className="text-base font-semibold text-[#1A202C] mb-1">
                 No Falls Detected
               </h3>
-              <p className="text-[#718096]">
+              <p className="text-sm text-[#718096]">
                 Great news! No fall events have been recorded yet.
               </p>
             </div>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-2">
               {fallHistory.map((event) => (
                 <button
                   key={event.id}
                   onClick={() => setSelectedEvent(event)}
-                  className="w-full sg-card p-4 text-left hover:shadow-md transition-shadow"
+                  className="w-full sg-card p-3 text-left hover:shadow-md transition-shadow"
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start gap-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
                       <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center ${getStatusColor(
+                        className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${getStatusColor(
                           event.status
                         )}`}
                       >
                         {getStatusIcon(event.status)}
                       </div>
-                      <div>
-                        <p className="font-semibold text-[#1A202C]">
+                      <div className="min-w-0">
+                        <p className="font-semibold text-[#1A202C] text-sm">
                           Fall Detected
                         </p>
-                        <p className="text-sm text-[#718096] flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
+                        <p className="text-xs text-[#718096] flex items-center gap-1 truncate">
+                          <Clock className="w-3 h-3 flex-shrink-0" />
                           {event.timestamp.toLocaleString()}
                         </p>
-                        {event.location && (
-                          <p className="text-sm text-[#718096] flex items-center gap-1 mt-1">
-                            <MapPin className="w-3 h-3" />
-                            Location shared
-                          </p>
-                        )}
                       </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right flex-shrink-0">
                       <span
-                        className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${getStatusColor(
                           event.status
                         )}`}
                       >
                         {getStatusText(event.status)}
                       </span>
-                      <p className="text-sm text-[#718096] mt-1">
+                      <p className="text-xs text-[#718096] mt-0.5">
                         {event.confidence.toFixed(0)}% confidence
                       </p>
                     </div>
@@ -229,68 +220,68 @@ export function CaregiverDashboard({
       {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
           <div
-            className="absolute inset-0 bg-black/50"
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setSelectedEvent(null)}
           />
-          <div className="relative w-full max-w-md mx-4 bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[80vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-[#1A202C]">Event Details</h2>
+          <div className="relative w-full max-w-[440px] mx-4 bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden max-h-[80vh] overflow-y-auto">
+            <div className="p-5">
+              <div className="flex items-center justify-between mb-5">
+                <h2 className="text-lg font-bold text-[#1A202C]">Event Details</h2>
                 <button
                   onClick={() => setSelectedEvent(null)}
-                  className="w-8 h-8 rounded-full bg-[#F5F7FA] flex items-center justify-center"
+                  className="w-8 h-8 rounded-full bg-[#F5F7FA] flex items-center justify-center hover:bg-[#E8ECF0] transition-colors"
                 >
-                  <span className="text-[#718096]">✕</span>
+                  <span className="text-[#718096] text-sm">✕</span>
                 </button>
               </div>
 
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center ${getStatusColor(
+                    className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${getStatusColor(
                       selectedEvent.status
                     )}`}
                   >
                     {getStatusIcon(selectedEvent.status)}
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-semibold text-[#1A202C]">
                       {getStatusText(selectedEvent.status)}
                     </p>
-                    <p className="text-sm text-[#718096]">
+                    <p className="text-sm text-[#718096] truncate">
                       {selectedEvent.timestamp.toLocaleString()}
                     </p>
                   </div>
                 </div>
 
-                <div className="sg-card p-4">
-                  <p className="text-sm text-[#718096] mb-1">Detection Confidence</p>
+                <div className="sg-card p-3">
+                  <p className="text-xs text-[#718096] mb-1">Detection Confidence</p>
                   <div className="flex items-center gap-3">
-                    <div className="flex-1 h-3 bg-[#F5F7FA] rounded-full overflow-hidden">
+                    <div className="flex-1 h-2.5 bg-[#F5F7FA] rounded-full overflow-hidden">
                       <div
                         className="h-full bg-[#0056D2] rounded-full transition-all"
                         style={{ width: `${selectedEvent.confidence}%` }}
                       />
                     </div>
-                    <span className="font-bold text-[#1A202C]">
+                    <span className="font-bold text-[#1A202C] text-sm">
                       {selectedEvent.confidence.toFixed(0)}%
                     </span>
                   </div>
                 </div>
 
                 {selectedEvent.location && (
-                  <div className="sg-card p-4">
-                    <p className="text-sm text-[#718096] mb-2">Location</p>
-                    <div className="flex items-center gap-2 text-[#1A202C]">
-                      <MapPin className="w-5 h-5 text-[#0056D2]" />
-                      <span>
+                  <div className="sg-card p-3">
+                    <p className="text-xs text-[#718096] mb-2">Location</p>
+                    <div className="flex items-center gap-2 text-[#1A202C] text-sm">
+                      <MapPin className="w-4 h-4 text-[#0056D2] flex-shrink-0" />
+                      <span className="truncate">
                         {selectedEvent.location.latitude.toFixed(6)},{' '}
                         {selectedEvent.location.longitude.toFixed(6)}
                       </span>
                     </div>
                     <Button
                       variant="outline"
-                      className="w-full mt-3 rounded-full"
+                      className="w-full mt-3 rounded-full text-sm h-10"
                       onClick={() => {
                         if (selectedEvent.location) {
                           window.open(
@@ -307,9 +298,9 @@ export function CaregiverDashboard({
                 )}
 
                 {selectedEvent.skeletonData && (
-                  <div className="sg-card p-4">
-                    <p className="text-sm text-[#718096] mb-2">Skeleton Replay</p>
-                    <div className="bg-black rounded-xl h-40 flex items-center justify-center">
+                  <div className="sg-card p-3">
+                    <p className="text-xs text-[#718096] mb-2">Skeleton Replay</p>
+                    <div className="bg-black rounded-xl aspect-video flex items-center justify-center overflow-hidden">
                       <canvas
                         ref={(canvas) => {
                           if (canvas && selectedEvent.skeletonData) {
@@ -321,10 +312,10 @@ export function CaregiverDashboard({
                             }
                           }
                         }}
-                        className="w-full h-full rounded-xl"
+                        className="w-full h-full"
                       />
                     </div>
-                    <p className="text-xs text-[#A0AEC0] mt-2 text-center">
+                    <p className="text-[10px] text-[#A0AEC0] mt-2 text-center">
                       Privacy-preserving skeleton view only
                     </p>
                   </div>

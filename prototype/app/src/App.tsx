@@ -239,9 +239,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Toaster position="top-center" richColors />
-      {renderView()}
+    <div className="min-h-screen bg-[#F0F2F5]">
+      <div className="sg-app-container bg-white">
+        <Toaster position="top-center" richColors />
+        {renderView()}
+      </div>
     </div>
   );
 }

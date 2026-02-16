@@ -83,7 +83,7 @@ export function AlertModal({
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
       {/* Alert Card */}
-      <div className="relative w-full max-w-md mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden animate-sg-shake">
+      <div className="relative w-full max-w-[440px] mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden animate-sg-shake max-h-[90vh] overflow-y-auto">
         {/* Header - Alert Color */}
         <div className="bg-[#FF6B00] p-6 text-white">
           <div className="flex items-center justify-between mb-4">
